@@ -7,12 +7,23 @@ class AuthenticationsService {
   }
 
   async addRefreshToken(token) {
-    const query = {
-      text: 'INSERT INTO authentications VALUES($1)',
+    // Check if token already exists
+    const checkQuery = {
+      text: 'SELECT token FROM authentications WHERE token = $1',
       values: [token],
     };
 
-    await this._pool.query(query);
+    const checkResult = await this._pool.query(checkQuery);
+
+    // Only insert if token doesn't exist
+    if (!checkResult.rows.length) {
+      const query = {
+        text: 'INSERT INTO authentications VALUES($1)',
+        values: [token],
+      };
+
+      await this._pool.query(query);
+    }
   }
 
   async verifyRefreshToken(token) {
