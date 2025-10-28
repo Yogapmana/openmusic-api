@@ -1,0 +1,26 @@
+{
+  "name": "openmusic-consumer",
+  "version": "1.0.0",
+  "description": "Consumer service for OpenMusic API to process playlist exports",
+  "main": "src/consumer.js",
+  "scripts": {
+    "start": "node src/consumer.js",
+    "start-dev": "nodemon src/consumer.js"
+  },
+  "keywords": [
+    "rabbitmq",
+    "consumer",
+    "email"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.5",
+    "dotenv": "^17.2.3",
+    "nodemailer": "^6.10.1",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

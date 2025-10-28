@@ -8,3 +8,4 @@ coverage
 dist
 build
 .env.test
+uploads/
